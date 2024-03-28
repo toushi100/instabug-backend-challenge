@@ -7,7 +7,6 @@ gem "rails", "~> 7.1.3"
 
 # Use mysql as the database for Active Record
 gem "mysql2", "~> 0.5"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -35,6 +34,7 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 gem "sidekiq"
+gem "sidekiq-cron"
 gem "blueprinter"
 gem "elasticsearch-model"
 gem "elasticsearch-rails"
@@ -48,4 +48,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-

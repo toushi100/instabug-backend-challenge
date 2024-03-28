@@ -1,0 +1,4 @@
+refresh_message_index:
+  cron: "*/1 * * * *"
+  class: "RefreshMessageIndexJob"
+  queue: redis

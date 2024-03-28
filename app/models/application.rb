@@ -1,6 +1,5 @@
 class Application < ApplicationRecord
-
-has_many :chats
+  has_many :chats, dependent: :destroy
   before_create :generate_token
 
   def generate_token

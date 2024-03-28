@@ -12,12 +12,8 @@ class V1::ChatsController < V1::ApplicationController
   end
 
   def create
-    chat = Chat.new(application_id: @application.id)
-    if chat.save
-      render json: V1::ChatsSerializer.render(chat), status: :created
-    else
-      render_error(chat)
-    end
+    create_chat_job = CreateChatJob.perform_later(@application.id)
+    render json: { job_id: create_chat_job.job_id }, status: :ok
   end
 
   private
@@ -27,7 +23,7 @@ class V1::ChatsController < V1::ApplicationController
   end
 
   def set_chat
-    @chat = @application.chats.find_by(number:params[:number])
+    @chat = @application.chats.find_by(number: params[:number])
   end
 
   def application_params
