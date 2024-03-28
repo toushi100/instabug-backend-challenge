@@ -5,7 +5,8 @@ class Chat < ApplicationRecord
   after_create :update_application_chats_count
 
   def set_number
-    last_chat_numebr = self.application.chats.last.number || 0
+   return self.number = 1 if self.application.chats.count == 0
+    last_chat_numebr = self.application.chats.last.number 
     self.number = last_chat_numebr + 1
   end
 
